@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Lucas Garden Services provides professional lawn mowing, hedge cutting, garden clearance, rubbish removal, and bespoke maintenance in Surrey and surrounding areas.">
     <title>Lucas Garden Services | Premium Surrey Lawn & Garden Care</title>
     
@@ -13,7 +13,7 @@
     <style>
         /* Agency-Tier Variables */
         :root {
-            --primary-dark: #1A2421; /* Almost black-green */
+            --primary-dark: #1A2421;
             --primary-green: #2C422E;
             --accent-green: #588157;
             --light-sage: #E3E7E0;
@@ -28,13 +28,17 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            overflow-x: hidden; /* Prevent horizontal scrolling on mobile */
+            width: 100%;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             font-weight: 300;
             color: var(--text-grey);
             background-color: var(--off-white);
             line-height: 1.6;
-            padding-bottom: 70px;
         }
 
         h1, h2, h3, .logo-text {
@@ -137,19 +141,6 @@
             position: relative;
         }
 
-        .nav-phone::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0%;
-            height: 1px;
-            background-color: var(--primary-dark);
-            transition: width 0.3s ease;
-        }
-
-        .nav-phone:hover::after { width: 100%; }
-
         /* Modern Split Hero Section */
         .hero {
             display: grid;
@@ -159,7 +150,7 @@
         }
 
         .hero-content {
-            padding: 10% 10% 10% 10%;
+            padding: 10%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -206,12 +197,9 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            /* Changed from 320px to 280px to prevent mobile horizontal scroll bleed */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 60px 40px;
-        }
-
-        .service-card {
-            group: card;
         }
 
         .service-img-container {
@@ -232,7 +220,7 @@
             font-size: 0.95rem;
         }
 
-        /* Areas Covered - Minimalist Text List */
+        /* Areas Covered */
         .areas-covered {
             padding: 80px 5%;
             background-color: var(--primary-dark);
@@ -250,7 +238,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px 40px;
+            gap: 15px 30px;
             list-style: none;
             max-width: 900px;
             margin: 0 auto;
@@ -316,10 +304,6 @@
             transition: color 0.3s;
         }
 
-        .footer-col a:hover {
-            color: var(--primary-dark);
-        }
-
         .copyright {
             text-align: center;
             font-size: 0.85rem;
@@ -347,7 +331,7 @@
             font-size: 0.8rem;
         }
 
-        /* Media Queries */
+        /* Tablet Media Queries */
         @media (max-width: 992px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -372,11 +356,49 @@
             }
         }
 
+        /* Strict Mobile Optimization */
         @media (max-width: 768px) {
+            /* Header Fixes */
+            header { padding: 15px 5%; }
+            .logo-text { font-size: 1.25rem; }
             .nav-contact { display: none; }
+            
+            /* Enable Sticky Footer & Add Body Padding so footer doesn't overlap content */
             .mobile-sticky-footer { display: flex; }
-            body { padding-bottom: 60px; }
-            .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+            body { padding-bottom: 60px; } 
+
+            /* Hero Fixes - Scale down fonts drastically */
+            .hero-content { padding: 15% 5% 5% 5%; }
+            .hero h1 { font-size: 2.4rem; margin-bottom: 16px; }
+            .hero p { font-size: 1rem; margin-bottom: 30px; }
+            .hero-image-wrapper { height: 40vh; }
+            .btn { width: 100%; margin-bottom: 10px; } /* Full width buttons on mobile */
+
+            /* Section Padding Fixes - Remove massive dead zones */
+            .services { padding: 60px 5%; }
+            .areas-covered { padding: 60px 5%; }
+            .trust-section { padding: 60px 5%; }
+            
+            /* Service Header Fixes */
+            .section-header { 
+                flex-direction: column; 
+                align-items: flex-start; 
+                margin-bottom: 40px; 
+            }
+            .section-title { font-size: 2.2rem; margin-bottom: 10px; }
+            .section-header p { text-align: left; max-width: 100%; font-size: 0.9rem; }
+            
+            /* Service Grid Fixes */
+            .services-grid { gap: 40px 20px; }
+            .service-card h3 { font-size: 1.3rem; }
+
+            /* Trust Section Fixes */
+            .trust-content h2 { font-size: 2.2rem; margin-bottom: 20px; }
+            .trust-content p { font-size: 1rem; }
+
+            /* Footer Fixes - Account for sticky bar */
+            footer { padding: 60px 5% 100px 5%; } 
+            .mobile-sticky-footer .btn { padding: 18px 0; margin-bottom: 0; }
         }
     </style>
 </head>
@@ -394,14 +416,14 @@
         <div class="hero-content">
             <h1>Refined Exterior Spaces.</h1>
             <p>Elevating kerb appeal with bespoke maintenance, pristine lawns, and tailored clearances for properties across Surrey.</p>
-            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                <a href="#services" class="btn btn-primary">Explore Services</a>
-                <a href="tel:+447496796334" class="btn btn-outline">Call 07496 796334</a>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; width: 100%;">
+                <a href="#services" class="btn btn-primary" style="flex: 1; min-width: 200px;">Explore Services</a>
+                <a href="tel:+447496796334" class="btn btn-outline" style="flex: 1; min-width: 200px;">Call 07496 796334</a>
             </div>
         </div>
         <div class="hero-image-wrapper">
             <div class="img-placeholder">
-                [ Hero Image: High-Res Vertical / Dynamic Shot of perfectly striped lawn leading to a house ]
+                [ Hero Image: Vertical dynamic shot of striped lawn leading to a house ]
             </div>
         </div>
     </section>
@@ -409,47 +431,47 @@
     <section id="services" class="services">
         <div class="section-header">
             <h2 class="section-title">Our Expertise</h2>
-            <p style="max-width: 400px; font-size: 0.95rem; text-align: right;">Comprehensive care routines designed for the modern Surrey estate.</p>
+            <p style="color: var(--text-grey);">Comprehensive care routines designed for the modern Surrey estate.</p>
         </div>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Image: Close-up of lawn stripes/mower ]</div>
+                    <div class="img-placeholder">[ Close-up of lawn stripes ]</div>
                 </div>
                 <h3>Lawn Mowing & Maintenance</h3>
                 <p>Meticulous care for healthy, perfectly striped turf. Bespoke schedules for regular upkeep or immediate one-off treatments.</p>
             </div>
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Image: Sharp, architecturally trimmed hedge ]</div>
+                    <div class="img-placeholder">[ Sharp, architecturally trimmed hedge ]</div>
                 </div>
                 <h3>Hedge Cutting</h3>
                 <p>Architectural precision in trimming, shaping, and reducing. We maintain sharp, clean boundaries for your property.</p>
             </div>
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Image: Before/After of a cleared garden space ]</div>
+                    <div class="img-placeholder">[ Before/After of a cleared garden ]</div>
                 </div>
                 <h3>Garden Clearance & Removal</h3>
                 <p>Thorough and efficient removal of overgrown vegetation, green waste, and general garden rubbish, restoring space.</p>
             </div>
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Image: Freshly laid mulch around vibrant plants ]</div>
+                    <div class="img-placeholder">[ Freshly laid mulch around plants ]</div>
                 </div>
                 <h3>Planting & Mulching</h3>
                 <p>Curated planting and professional mulching to enrich soil structure, suppress weeds, and elevate your garden's aesthetic.</p>
             </div>
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Image: Power washing in action on stone patio ]</div>
+                    <div class="img-placeholder">[ Power washing in action ]</div>
                 </div>
                 <h3>Pressure Washing</h3>
                 <p>Deep restorative cleaning for driveways, patios, and stone pathways, stripping away years of weathering.</p>
             </div>
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Image: Hand spreading seed or fresh green shoots ]</div>
+                    <div class="img-placeholder">[ Hand spreading seed ]</div>
                 </div>
                 <h3>Grass Seeding & Turfing</h3>
                 <p>Strategic overseeding and foundational turf repair to establish dense, resilient, and luxurious new lawns.</p>
@@ -474,7 +496,7 @@
     <section class="trust-section">
         <div class="trust-img-container">
             <div class="img-placeholder">
-                [ Portrait Image: Candid shot of the team working or a beautiful garden detail ]
+                [ Candid portrait of the team working or a beautiful garden detail ]
             </div>
         </div>
         <div class="trust-content">
@@ -488,17 +510,17 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h3 class="logo-text">Lucas Garden Services</h3>
-                <p style="max-width: 300px; margin-top: 20px;">Professional landscaping, structured maintenance, and complete clearance services operating locally across Surrey.</p>
+                <p style="max-width: 300px; margin-top: 15px;">Professional landscaping, structured maintenance, and complete clearance services operating locally across Surrey.</p>
             </div>
             <div class="footer-col">
-                <h4 style="font-family: 'Inter', sans-serif; font-weight: 500; margin-bottom: 20px; color: var(--primary-dark);">Services</h4>
+                <h4 style="font-family: 'Inter', sans-serif; font-weight: 500; margin-bottom: 15px; color: var(--primary-dark);">Services</h4>
                 <a href="#services">Lawn Maintenance</a>
                 <a href="#services">Hedge Cutting</a>
                 <a href="#services">Clearance</a>
                 <a href="#services">Pressure Washing</a>
             </div>
             <div class="footer-col">
-                <h4 style="font-family: 'Inter', sans-serif; font-weight: 500; margin-bottom: 20px; color: var(--primary-dark);">Contact</h4>
+                <h4 style="font-family: 'Inter', sans-serif; font-weight: 500; margin-bottom: 15px; color: var(--primary-dark);">Contact</h4>
                 <a href="tel:+447496796334">T: 07496 796334</a>
                 <a href="mailto:lucasgardenservices@yahoo.com">E: lucasgardenservices@yahoo.com</a>
                 <a href="https://www.instagram.com/lucasgardens_/" target="_blank">IG: @lucasgardens_</a>
