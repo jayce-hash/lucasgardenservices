@@ -6,6 +6,13 @@
     <meta name="description" content="Lucas Garden Services provides professional lawn mowing, hedge cutting, garden clearance, rubbish removal, and bespoke maintenance in Surrey and surrounding areas.">
     <title>Lucas Garden Services | Premium Surrey Lawn & Garden Care</title>
     
+    <link rel="icon" type="image/png" href="LGSlogo.png">
+
+    <meta property="og:title" content="Lucas Garden Services | Surrey">
+    <meta property="og:description" content="Professional lawn mowing, hedge cutting, and garden clearance in Surrey.">
+    <meta property="og:image" content="https://lucasgardenservices.netlify.app/og-image.jpg"> <meta property="og:url" content="https://lucasgardenservices.netlify.app">
+    <meta property="og:type" content="website">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -50,26 +57,6 @@
         a {
             text-decoration: none;
             color: inherit;
-        }
-
-        /* The Image Placeholder Class (Kept in case you need it later) */
-        .img-placeholder {
-            background-color: #EAEAEA;
-            border: 1px dashed #B0B0B0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .real-img {
@@ -120,7 +107,7 @@
             background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 20px 5%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -130,10 +117,10 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
+        .header-logo {
+            height: 70px;
+            width: auto;
+            display: block;
         }
 
         .nav-contact {
@@ -226,7 +213,6 @@
             background-color: var(--light-sage);
         }
 
-        .service-card:hover .img-placeholder,
         .service-card:hover .real-img {
             transform: scale(1.08);
         }
@@ -414,9 +400,18 @@
             margin: 0 auto 60px auto;
         }
 
-        .footer-col h3 {
-            font-size: 1.5rem;
+        .footer-logo {
+            height: 80px;
+            width: auto;
             margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-col h4 {
+            font-family: 'Inter', sans-serif; 
+            font-weight: 500; 
+            margin-bottom: 15px; 
+            color: var(--primary-dark);
         }
 
         .footer-col p, .footer-col a {
@@ -437,6 +432,16 @@
             color: #999;
             border-top: 1px solid var(--light-sage);
             padding-top: 30px;
+        }
+
+        .copyright a {
+            display: inline;
+            margin: 0;
+            color: inherit;
+        }
+        
+        .copyright a:hover {
+            color: var(--accent-green);
         }
 
         /* Mobile Sticky Footer */
@@ -472,7 +477,7 @@
         /* Strict Mobile Optimization */
         @media (max-width: 768px) {
             header { padding: 15px 5%; }
-            .logo-text { font-size: 1.25rem; }
+            .header-logo { height: 55px; } /* Slightly smaller logo for mobile */
             .nav-contact { display: none; }
             
             .mobile-sticky-footer { display: flex; }
@@ -506,7 +511,9 @@
 <body>
 
     <header>
-        <div class="logo-text">Lucas Garden Services</div>
+        <a href="/" style="display: flex; align-items: center;">
+            <img src="LGSlogo.png" alt="Lucas Garden Services Logo" class="header-logo">
+        </a>
         <div class="nav-contact">
             <a href="tel:+447496796334" class="nav-phone">07496 796334</a>
             <a href="mailto:lucasgardenservices@yahoo.com" class="btn btn-primary" style="padding: 12px 24px;">Email Us</a>
@@ -680,25 +687,25 @@
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <h3 class="logo-text">Lucas Garden Services</h3>
-                <p style="max-width: 300px; margin-top: 15px;">Professional landscaping, structured maintenance, and complete clearance services operating locally across Surrey.</p>
+                <img src="LGSlogo.png" alt="Lucas Garden Services Logo" class="footer-logo">
+                <p style="max-width: 300px;">Professional landscaping, structured maintenance, and complete clearance services operating locally across Surrey.</p>
             </div>
             <div class="footer-col">
-                <h4 style="font-family: 'Inter', sans-serif; font-weight: 500; margin-bottom: 15px; color: var(--primary-dark);">Services</h4>
+                <h4>Services</h4>
                 <a href="#services">Lawn Maintenance</a>
                 <a href="#services">Hedge Cutting</a>
                 <a href="#services">Clearance</a>
                 <a href="#services">Pressure Washing</a>
             </div>
             <div class="footer-col">
-                <h4 style="font-family: 'Inter', sans-serif; font-weight: 500; margin-bottom: 15px; color: var(--primary-dark);">Contact</h4>
+                <h4>Contact</h4>
                 <a href="tel:+447496796334">T: 07496 796334</a>
                 <a href="mailto:lucasgardenservices@yahoo.com">E: lucasgardenservices@yahoo.com</a>
                 <a href="https://www.instagram.com/lucasgardens_/" target="_blank">IG: @lucasgardens_</a>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2026 Lucas Garden Services. Designed with precision.
+            &copy; 2026 Lucas Garden Services. Designed with precision. | <a href="#privacy" style="text-decoration: underline;">Privacy Policy</a>
         </div>
     </footer>
 
