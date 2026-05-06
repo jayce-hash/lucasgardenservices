@@ -52,7 +52,7 @@
             color: inherit;
         }
 
-        /* The Image Placeholder Class */
+        /* The Image Placeholder Class (Kept in case you need it later) */
         .img-placeholder {
             background-color: #EAEAEA;
             border: 1px dashed #B0B0B0;
@@ -203,7 +203,6 @@
             letter-spacing: -1px;
         }
 
-        /* FIXED: Locked to 3 columns to prevent uneven hanging cards */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -245,7 +244,7 @@
 
         /* Native CSS Horizontal Scrolling Testimonials */
         .testimonials {
-            padding: 100px 0 100px 5%; /* Right padding removed to let items bleed off screen */
+            padding: 100px 0 100px 5%; 
             background-color: var(--light-sage);
         }
 
@@ -253,7 +252,7 @@
             font-size: 2.5rem;
             margin-bottom: 60px;
             color: var(--primary-dark);
-            padding-right: 5%; /* Keeps header constrained */
+            padding-right: 5%; 
         }
 
         .testimonial-carousel {
@@ -261,10 +260,9 @@
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             gap: 30px;
-            padding-bottom: 40px; /* Space for the scrollbar */
-            padding-right: 5%; /* End padding so the last item doesn't stick to the edge */
+            padding-bottom: 40px; 
+            padding-right: 5%; 
             
-            /* Custom Scrollbar Styling */
             scrollbar-width: thin; 
             scrollbar-color: var(--accent-green) rgba(0,0,0,0.05);
         }
@@ -276,7 +274,7 @@
         .testimonial-carousel::-webkit-scrollbar-track {
             background: rgba(0,0,0,0.05);
             border-radius: 4px;
-            margin: 0 5%; /* Indents the scrollbar slightly */
+            margin: 0 5%; 
         }
 
         .testimonial-carousel::-webkit-scrollbar-thumb {
@@ -285,7 +283,7 @@
         }
 
         .testimonial-card {
-            flex: 0 0 400px; /* Forces cards to be a specific width */
+            flex: 0 0 400px; 
             scroll-snap-align: start;
             background-color: var(--white);
             padding: 40px;
@@ -308,7 +306,7 @@
             font-style: italic;
             margin-bottom: 25px;
             color: var(--text-grey);
-            flex-grow: 1; /* Pushes author down to align the bottoms */
+            flex-grow: 1; 
         }
 
         .testimonial-author {
@@ -376,11 +374,13 @@
             max-width: 500px;
         }
 
-        /* Native Instagram Feed Section */
+        /* Instagram Plugin Section */
         .ig-section {
             padding: 100px 5%;
             background-color: var(--white);
             text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .ig-header {
@@ -397,54 +397,6 @@
             color: var(--accent-green);
             text-decoration: underline;
             text-underline-offset: 4px;
-        }
-
-        .ig-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .ig-item {
-            position: relative;
-            aspect-ratio: 1/1; 
-            background-color: var(--light-sage);
-            overflow: hidden;
-            display: block;
-        }
-
-        .ig-item .img-placeholder {
-            border: none;
-        }
-
-        .ig-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(26, 36, 33, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            color: var(--white);
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-
-        .ig-item:hover .ig-overlay {
-            opacity: 1;
-        }
-        
-        .ig-item:hover .img-placeholder,
-        .ig-item:hover .real-img {
-            transform: scale(1.05);
         }
 
         /* Footer */
@@ -512,13 +464,9 @@
             .hero-content { padding: 15% 5% 10% 5%; text-align: center; align-items: center; }
             .hero h1 { font-size: 3.5rem; }
             .hero-image-wrapper { height: 50vh; padding: 0; }
-            
-            /* Change services to 2 columns on tablet */
             .services-grid { grid-template-columns: repeat(2, 1fr); }
-            
             .trust-section { grid-template-columns: 1fr; gap: 40px; }
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .ig-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         /* Strict Mobile Optimization */
@@ -536,17 +484,15 @@
             .hero-image-wrapper { height: 40vh; }
             .btn { width: 100%; margin-bottom: 10px; } 
 
-            /* Change services to 1 column on mobile */
             .services-grid { grid-template-columns: 1fr; }
 
             .services, .areas-covered, .trust-section, .ig-section { padding: 60px 5%; }
-            .testimonials { padding: 60px 0 60px 5%; } /* Keep right open for scroll bleed */
+            .testimonials { padding: 60px 0 60px 5%; } 
             
             .section-header { flex-direction: column; align-items: flex-start; margin-bottom: 40px; }
             .section-title { font-size: 2.2rem; margin-bottom: 10px; }
             .section-header p { text-align: left; max-width: 100%; font-size: 0.9rem; }
             
-            /* Responsive scroll card size */
             .testimonial-card { flex: 0 0 85vw; padding: 30px; }
 
             .trust-content h2 { font-size: 2.2rem; margin-bottom: 20px; }
@@ -577,9 +523,7 @@
             </div>
         </div>
         <div class="hero-image-wrapper">
-            <div class="img-placeholder">
-                [ Hero Image: Vertical dynamic shot of striped lawn ]
-            </div>
+            <img src="lucasgarden1.png" alt="Dynamic vertical shot of a beautifully striped lawn leading to a house" class="real-img">
         </div>
     </section>
 
@@ -591,42 +535,42 @@
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Close-up of lawn stripes ]</div>
+                    <img src="lucasgarden2.png" alt="Close-up of perfectly striped lawn" class="real-img">
                 </div>
                 <h3>Lawn Mowing & Maintenance</h3>
                 <p>Meticulous care for healthy, perfectly striped turf. Bespoke schedules for regular upkeep or immediate one-off treatments.</p>
             </div>
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Sharp, architecturally trimmed hedge ]</div>
+                    <img src="lucasgarden3.png" alt="Sharp, architecturally trimmed hedge" class="real-img">
                 </div>
                 <h3>Hedge Cutting</h3>
                 <p>Architectural precision in trimming, shaping, and reducing. We maintain sharp, clean boundaries for your property.</p>
             </div>
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Before/After of a cleared garden ]</div>
+                    <img src="lucasgarden4.png" alt="Before and after of a cleared garden space" class="real-img">
                 </div>
                 <h3>Garden Clearance & Removal</h3>
                 <p>Thorough and efficient removal of overgrown vegetation, green waste, and general garden rubbish, restoring space.</p>
             </div>
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Freshly laid mulch around plants ]</div>
+                    <img src="lucasgarden5.png" alt="Freshly laid mulch around healthy plants" class="real-img">
                 </div>
                 <h3>Planting & Mulching</h3>
                 <p>Curated planting and professional mulching to enrich soil structure, suppress weeds, and elevate your garden's aesthetic.</p>
             </div>
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Power washing in action ]</div>
+                    <img src="lucasgarden6.png" alt="Power washing a patio surface" class="real-img">
                 </div>
                 <h3>Pressure Washing</h3>
                 <p>Deep restorative cleaning for driveways, patios, and stone pathways, stripping away years of weathering.</p>
             </div>
             <div class="service-card">
                 <div class="service-img-container">
-                    <div class="img-placeholder">[ Hand spreading seed ]</div>
+                    <img src="lucasgarden7.png" alt="Hand spreading grass seed and topsoil" class="real-img">
                 </div>
                 <h3>Grass Seeding & Turfing</h3>
                 <p>Strategic overseeding and foundational turf repair to establish dense, resilient, and luxurious new lawns.</p>
@@ -637,73 +581,61 @@
     <section class="testimonials">
         <h2>Client Experiences</h2>
         <div class="testimonial-carousel">
-            
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Elliot and his team have totally transformed our garden. It had been barely touched for many years... now it looks fabulous! Nothing was too much trouble and they were willing to work unsociable hours to get the job done on time for our garden party!"</p>
                 <div class="testimonial-author">— Ashley Westen</div>
             </div>
-
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Lukas and his team are brilliant! They were so good when removing trees and garden scrubs we asked them back to do more work. Not only are they amazing at their job they are super polite and friendly - we would absolutely recommend them."</p>
                 <div class="testimonial-author">— Neil Jarman</div>
             </div>
-
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Elliot saved the day yesterday as always - arriving promptly and working flat out to clear, tidy and spruce up our very neglected garden. He is always a pleasure to have around. Nothing is too much trouble and he always gives valuable advice."</p>
                 <div class="testimonial-author">— Jane Kinch</div>
             </div>
-
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Elliot and his team quoted to clear my garden in preparation for putting my house on the market. Quote was fair and the work was carried out within a week. Will definitely use again when in my new property!"</p>
                 <div class="testimonial-author">— Devon Elliott</div>
             </div>
-
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Elliot was professional, polite and did a fantastic job of renovating my dad’s garden, we are so pleased with his work. The garden looks amazing."</p>
                 <div class="testimonial-author">— Vanessa Mcquaid</div>
             </div>
-
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Elliot and team did a winter tidy up and fence/pergola painting, ready for me to put my house on the market. Garden looks much tidier and have already had compliments from potential buyers!"</p>
                 <div class="testimonial-author">— Kim Colvin</div>
             </div>
-
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Elliot did an excellent job refreshing some old beds, with fresh compost and plants that he recommended to me. He also shaped up some shrubs and hedges for me which look brilliant. All the work was completed on time."</p>
                 <div class="testimonial-author">— Coloured By Kim</div>
             </div>
-
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Originally got Elliot and his team in to rip out a very overgrown garden. They were extremely efficient and polite, and the end result was amazing. Since then they have been coming back for regular maintenance, couldn’t recommend them more."</p>
                 <div class="testimonial-author">— Harry Lee</div>
             </div>
-
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Elliot and his team are punctual, polite and reliable. In recent months Elliot has carried out regular garden maintenance work for me and recently pressure washed the patio and front of the house slabs."</p>
                 <div class="testimonial-author">— Croco X</div>
             </div>
-
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Elliot and his team did a great job looking after our garden - tidying, pruning, weeding and planting. He suggested the best plants for our needs and supplied and put them in. Can definitely recommend this business."</p>
                 <div class="testimonial-author">— Elaine Watts</div>
             </div>
-
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
                 <p class="testimonial-text">"Very impressed with Elliot's gardening skills for our rental properties. He has always been reliable, efficient and would 100% recommend his services."</p>
                 <div class="testimonial-author">— Julie Withers</div>
             </div>
-
         </div>
     </section>
 
@@ -724,9 +656,7 @@
 
     <section class="trust-section">
         <div class="trust-img-container">
-            <div class="img-placeholder">
-                [ Candid portrait of Elliot / the team working ]
-            </div>
+            <img src="lucasgarden8.png" alt="Portrait of Elliot and the Lucas Garden Services team" class="real-img">
         </div>
         <div class="trust-content">
             <h2>Local Experts. Proven Results.</h2>
@@ -741,24 +671,10 @@
             <h2>Follow Our Work</h2>
             <p>See our latest transformations on <a href="https://www.instagram.com/lucasgardens_/" target="_blank">@lucasgardens_</a></p>
         </div>
-        <div class="ig-grid">
-            <a href="https://www.instagram.com/lucasgardens_/" target="_blank" class="ig-item">
-                <div class="img-placeholder">[ IG Photo 1 ]</div>
-                <div class="ig-overlay">View on Instagram</div>
-            </a>
-            <a href="https://www.instagram.com/lucasgardens_/" target="_blank" class="ig-item">
-                <div class="img-placeholder">[ IG Photo 2 ]</div>
-                <div class="ig-overlay">View on Instagram</div>
-            </a>
-            <a href="https://www.instagram.com/lucasgardens_/" target="_blank" class="ig-item">
-                <div class="img-placeholder">[ IG Photo 3 ]</div>
-                <div class="ig-overlay">View on Instagram</div>
-            </a>
-            <a href="https://www.instagram.com/lucasgardens_/" target="_blank" class="ig-item">
-                <div class="img-placeholder">[ IG Photo 4 ]</div>
-                <div class="ig-overlay">View on Instagram</div>
-            </a>
-        </div>
+        
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-db42c972-c7c6-45aa-87b7-3e28a0a4c942" data-elfsight-app-lazy></div>
+        
     </section>
 
     <footer>
