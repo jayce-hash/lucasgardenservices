@@ -36,6 +36,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+        }
+
         html, body {
             overflow-x: hidden;
             width: 100%;
@@ -108,7 +112,7 @@
             background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 15px 5%;
+            padding: 10px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -119,9 +123,29 @@
         }
 
         .header-logo {
-            height: 70px;
+            height: 110px; /* Increased size to fit the wreath perfectly */
             width: auto;
             display: block;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .desktop-nav a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--accent-green);
         }
 
         .nav-contact {
@@ -477,8 +501,9 @@
 
         /* Strict Mobile Optimization */
         @media (max-width: 768px) {
-            header { padding: 15px 5%; }
-            .header-logo { height: 55px; } /* Slightly smaller logo for mobile */
+            header { padding: 10px 5%; }
+            .header-logo { height: 80px; } /* Slightly smaller logo for mobile, but much larger than before */
+            .desktop-nav { display: none; } /* Keeps mobile header clean */
             .nav-contact { display: none; }
             
             .mobile-sticky-footer { display: flex; }
@@ -515,6 +540,13 @@
         <a href="/" style="display: flex; align-items: center;">
             <img src="LGSlogo.png" alt="Lucas Garden Services Logo" class="header-logo">
         </a>
+        
+        <nav class="desktop-nav">
+            <a href="#services">Services</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#about">About</a>
+        </nav>
+
         <div class="nav-contact">
             <a href="tel:+447496796334" class="nav-phone">07496 796334</a>
             <a href="mailto:lucasgardenservices@yahoo.com" class="btn btn-primary" style="padding: 12px 24px;">Email Us</a>
@@ -586,7 +618,7 @@
         </div>
     </section>
 
-    <section class="testimonials">
+    <section id="reviews" class="testimonials">
         <h2>Client Experiences</h2>
         <div class="testimonial-carousel">
             <div class="testimonial-card">
@@ -662,7 +694,7 @@
         </ul>
     </section>
 
-    <section class="trust-section">
+    <section id="about" class="trust-section">
         <div class="trust-img-container">
             <img src="lucasgarden8.jpeg" alt="Portrait of Elliot and the Lucas Garden Services team" class="real-img" loading="lazy">
         </div>
