@@ -72,7 +72,6 @@
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Once you use real <img> tags, this class will handle the zoom */
         .real-img {
             width: 100%;
             height: 100%;
@@ -204,13 +203,13 @@
             letter-spacing: -1px;
         }
 
+        /* FIXED: Locked to 3 columns to prevent uneven hanging cards */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 60px 40px;
         }
 
-        /* Service Cards & Micro-interactions */
         .service-card {
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
@@ -224,13 +223,13 @@
             width: 100%;
             aspect-ratio: 4/3;
             margin-bottom: 24px;
-            overflow: hidden; /* Contains the zoom */
+            overflow: hidden;
             background-color: var(--light-sage);
         }
 
         .service-card:hover .img-placeholder,
         .service-card:hover .real-img {
-            transform: scale(1.08); /* Gentle zoom on hover */
+            transform: scale(1.08);
         }
 
         .service-card h3 {
@@ -244,33 +243,57 @@
             font-size: 0.95rem;
         }
 
-        /* Testimonials Section */
+        /* Native CSS Horizontal Scrolling Testimonials */
         .testimonials {
-            padding: 100px 5%;
+            padding: 100px 0 100px 5%; /* Right padding removed to let items bleed off screen */
             background-color: var(--light-sage);
-            text-align: center;
         }
 
         .testimonials h2 {
             font-size: 2.5rem;
             margin-bottom: 60px;
             color: var(--primary-dark);
+            padding-right: 5%; /* Keeps header constrained */
         }
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 30px;
+            padding-bottom: 40px; /* Space for the scrollbar */
+            padding-right: 5%; /* End padding so the last item doesn't stick to the edge */
+            
+            /* Custom Scrollbar Styling */
+            scrollbar-width: thin; 
+            scrollbar-color: var(--accent-green) rgba(0,0,0,0.05);
+        }
+
+        .testimonial-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .testimonial-carousel::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 4px;
+            margin: 0 5%; /* Indents the scrollbar slightly */
+        }
+
+        .testimonial-carousel::-webkit-scrollbar-thumb {
+            background-color: var(--accent-green);
+            border-radius: 4px;
         }
 
         .testimonial-card {
+            flex: 0 0 400px; /* Forces cards to be a specific width */
+            scroll-snap-align: start;
             background-color: var(--white);
             padding: 40px;
             text-align: left;
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             border-top: 4px solid var(--accent-green);
+            display: flex;
+            flex-direction: column;
         }
 
         .stars {
@@ -285,6 +308,7 @@
             font-style: italic;
             margin-bottom: 25px;
             color: var(--text-grey);
+            flex-grow: 1; /* Pushes author down to align the bottoms */
         }
 
         .testimonial-author {
@@ -385,7 +409,7 @@
 
         .ig-item {
             position: relative;
-            aspect-ratio: 1/1; /* Perfect square like Instagram */
+            aspect-ratio: 1/1; 
             background-color: var(--light-sage);
             overflow: hidden;
             display: block;
@@ -488,9 +512,13 @@
             .hero-content { padding: 15% 5% 10% 5%; text-align: center; align-items: center; }
             .hero h1 { font-size: 3.5rem; }
             .hero-image-wrapper { height: 50vh; padding: 0; }
+            
+            /* Change services to 2 columns on tablet */
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            
             .trust-section { grid-template-columns: 1fr; gap: 40px; }
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .ig-grid { grid-template-columns: repeat(2, 1fr); } /* 2 columns on tablet */
+            .ig-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         /* Strict Mobile Optimization */
@@ -508,14 +536,18 @@
             .hero-image-wrapper { height: 40vh; }
             .btn { width: 100%; margin-bottom: 10px; } 
 
-            .services, .areas-covered, .trust-section, .testimonials, .ig-section { padding: 60px 5%; }
+            /* Change services to 1 column on mobile */
+            .services-grid { grid-template-columns: 1fr; }
+
+            .services, .areas-covered, .trust-section, .ig-section { padding: 60px 5%; }
+            .testimonials { padding: 60px 0 60px 5%; } /* Keep right open for scroll bleed */
             
             .section-header { flex-direction: column; align-items: flex-start; margin-bottom: 40px; }
             .section-title { font-size: 2.2rem; margin-bottom: 10px; }
             .section-header p { text-align: left; max-width: 100%; font-size: 0.9rem; }
             
-            .services-grid { gap: 40px 20px; }
-            .service-card h3 { font-size: 1.3rem; }
+            /* Responsive scroll card size */
+            .testimonial-card { flex: 0 0 85vw; padding: 30px; }
 
             .trust-content h2 { font-size: 2.2rem; margin-bottom: 20px; }
             .trust-content p { font-size: 1rem; }
@@ -604,22 +636,74 @@
 
     <section class="testimonials">
         <h2>Client Experiences</h2>
-        <div class="testimonial-grid">
+        <div class="testimonial-carousel">
+            
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Elliot and his team have totally transformed our garden. It had been barely touched for many years... now it looks fabulous! Nothing was too much trouble."</p>
+                <p class="testimonial-text">"Elliot and his team have totally transformed our garden. It had been barely touched for many years... now it looks fabulous! Nothing was too much trouble and they were willing to work unsociable hours to get the job done on time for our garden party!"</p>
                 <div class="testimonial-author">— Ashley Westen</div>
             </div>
+
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Lukas and his team are brilliant! Not only are they amazing at their job, they are super polite and friendly - we would absolutely recommend them."</p>
+                <p class="testimonial-text">"Lukas and his team are brilliant! They were so good when removing trees and garden scrubs we asked them back to do more work. Not only are they amazing at their job they are super polite and friendly - we would absolutely recommend them."</p>
                 <div class="testimonial-author">— Neil Jarman</div>
             </div>
+
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Elliot saved the day... arriving promptly and working flat out to clear, tidy and spruce up our very neglected garden. He is always a pleasure to have around."</p>
+                <p class="testimonial-text">"Elliot saved the day yesterday as always - arriving promptly and working flat out to clear, tidy and spruce up our very neglected garden. He is always a pleasure to have around. Nothing is too much trouble and he always gives valuable advice."</p>
                 <div class="testimonial-author">— Jane Kinch</div>
             </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Elliot and his team quoted to clear my garden in preparation for putting my house on the market. Quote was fair and the work was carried out within a week. Will definitely use again when in my new property!"</p>
+                <div class="testimonial-author">— Devon Elliott</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Elliot was professional, polite and did a fantastic job of renovating my dad’s garden, we are so pleased with his work. The garden looks amazing."</p>
+                <div class="testimonial-author">— Vanessa Mcquaid</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Elliot and team did a winter tidy up and fence/pergola painting, ready for me to put my house on the market. Garden looks much tidier and have already had compliments from potential buyers!"</p>
+                <div class="testimonial-author">— Kim Colvin</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Elliot did an excellent job refreshing some old beds, with fresh compost and plants that he recommended to me. He also shaped up some shrubs and hedges for me which look brilliant. All the work was completed on time."</p>
+                <div class="testimonial-author">— Coloured By Kim</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Originally got Elliot and his team in to rip out a very overgrown garden. They were extremely efficient and polite, and the end result was amazing. Since then they have been coming back for regular maintenance, couldn’t recommend them more."</p>
+                <div class="testimonial-author">— Harry Lee</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Elliot and his team are punctual, polite and reliable. In recent months Elliot has carried out regular garden maintenance work for me and recently pressure washed the patio and front of the house slabs."</p>
+                <div class="testimonial-author">— Croco X</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Elliot and his team did a great job looking after our garden - tidying, pruning, weeding and planting. He suggested the best plants for our needs and supplied and put them in. Can definitely recommend this business."</p>
+                <div class="testimonial-author">— Elaine Watts</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Very impressed with Elliot's gardening skills for our rental properties. He has always been reliable, efficient and would 100% recommend his services."</p>
+                <div class="testimonial-author">— Julie Withers</div>
+            </div>
+
         </div>
     </section>
 
