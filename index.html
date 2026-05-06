@@ -8,7 +8,7 @@
     
     <link rel="icon" type="image/png" href="LGSlogo.png">
 
-   <meta property="og:title" content="Lucas Garden Services | Surrey">
+    <meta property="og:title" content="Lucas Garden Services | Surrey">
     <meta property="og:description" content="Professional lawn mowing, hedge cutting, and garden clearance in Surrey.">
     <meta property="og:image" content="https://lucasgardenservices.netlify.app/social-preview.png"> 
     <meta property="og:url" content="https://lucasgardenservices.netlify.app">
@@ -40,18 +40,16 @@
             scroll-behavior: smooth;
         }
 
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
             font-weight: 300;
             color: var(--text-grey);
             background-color: var(--off-white);
             line-height: 1.6;
-            transition: overflow 0.3s; /* For mobile menu lock */
+            overflow-x: hidden;
+            width: 100%;
+            padding-top: 130px; /* Pushes content down to account for the fixed header */
+            transition: overflow 0.3s;
         }
 
         h1, h2, h3, .logo-text {
@@ -108,18 +106,20 @@
             color: var(--white);
         }
 
-        /* Modern Glassmorphism Header */
+        /* Modern Glassmorphism Fixed Header */
         header {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             padding: 10px 5%;
             display: grid;
             grid-template-columns: 1fr auto 1fr; 
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            width: 100%;
+            z-index: 900;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
@@ -195,7 +195,7 @@
             background: rgba(0,0,0,0.4);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            z-index: 999;
+            z-index: 998;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -208,7 +208,7 @@
             max-width: 320px;
             height: 100%;
             background-color: var(--white);
-            z-index: 1000;
+            z-index: 999;
             box-shadow: -10px 0 30px rgba(0,0,0,0.1);
             transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             padding: 40px 30px;
@@ -248,7 +248,7 @@
 
         /* Mobile Menu Open State */
         body.menu-open {
-            overflow: hidden; /* Prevent scrolling behind menu */
+            overflow: hidden;
         }
 
         body.menu-open .mobile-overlay {
@@ -568,25 +568,6 @@
             color: var(--accent-green);
         }
 
-        /* Mobile Sticky Footer */
-        .mobile-sticky-footer {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--white);
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.08);
-            z-index: 1000;
-        }
-
-        .mobile-sticky-footer .btn {
-            flex: 1;
-            border-radius: 0;
-            padding: 20px 0;
-            font-size: 0.8rem;
-        }
-
         /* Tablet Media Queries */
         @media (max-width: 992px) {
             .hero { grid-template-columns: 1fr; }
@@ -598,26 +579,27 @@
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
         }
 
-      /* Strict Mobile Optimization */
+        /* Strict Mobile Optimization */
         @media (max-width: 768px) {
+            body { 
+                padding-top: 95px; /* Adjusts top padding for the slightly smaller mobile header */
+            }
+
             header { 
                 padding: 15px 5%; 
-                display: flex; /* Swaps from Grid to Flexbox for mobile */
-                justify-content: space-between; /* Pushes logo left, menu right */
+                display: flex; 
+                justify-content: space-between; 
                 align-items: center;
             }
-            .header-logo { height: 65px; } /* Slightly smaller so it looks elegant on the left */
+            .header-logo { height: 65px; } 
             
             /* Hide Desktop Nav, Show Hamburger */
             .desktop-nav, .header-icons { display: none; } 
             .hamburger-btn { 
                 display: block; 
-                padding: 5px 0 5px 15px; /* Adds a larger tap target */
+                padding: 5px 0 5px 15px; 
             }
             
-            .mobile-sticky-footer { display: flex; }
-            body { padding-bottom: 60px; } 
-
             .hero-content { padding: 15% 5% 5% 5%; }
             .hero h1 { font-size: 2.4rem; margin-bottom: 16px; }
             .hero p { font-size: 1rem; margin-bottom: 30px; }
@@ -638,8 +620,7 @@
             .trust-content h2 { font-size: 2.2rem; margin-bottom: 20px; }
             .trust-content p { font-size: 1rem; }
 
-            footer { padding: 60px 5% 100px 5%; } 
-            .mobile-sticky-footer .btn { padding: 18px 0; margin-bottom: 0; }
+            footer { padding: 60px 5% 40px 5%; } 
         }
     </style>
 </head>
@@ -901,11 +882,6 @@
             &copy; 2026 Lucas Garden Services. Designed with precision. | <a href="#privacy" style="text-decoration: underline;">Privacy Policy</a>
         </div>
     </footer>
-
-    <div class="mobile-sticky-footer">
-        <a href="tel:+447496796334" class="btn btn-primary" style="background-color: var(--primary-dark); border-right: 1px solid rgba(255,255,255,0.1);">Call Now</a>
-        <a href="mailto:lucasgardenservices@yahoo.com" class="btn btn-primary" style="background-color: var(--off-white); color: var(--primary-dark);">Email Us</a>
-    </div>
 
     <script src="https://elfsightcdn.com/platform.js" defer></script>
 
